@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/log_Style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <div id="logo"><h1>Registro</h1></div>
+
+    <section class="stark-login">
+    <div id="message" style="max-width:500px;margin:180px auto 10px;color:#fff;padding:10px;border-radius:6px;display:none;"></div>
+
+    <form action="backend/registro.php" method="post">
+        <div id="fade-box">
+            <label for="usuario"><i class="fas fa-user"></i></label>
+            <input type="text" id="usuario" name="usuario" placeholder="Usuario" required>
+
+            <label for="correo"><i class="fas fa-envelope"></i></label>
+            <input type="email" id="correo" name="correo" placeholder="Correo electrónico" required>
+
+            <label for="password"><i class="fas fa-lock"></i></label>
+            <input type="password" id="password" name="password" placeholder="Contraseña" required>
+
+            <label for="confirmar"><i class="fas fa-check"></i></label>
+            <input type="password" id="confirmar" name="confirmar" placeholder="Confirmar contraseña" required>
+
+            <button type="submit">Crear Cuenta</button>
+            <a href="login.html" class="register-link">¿Ya tienes una cuenta? Inicia sesión</a>
+        </div>
+    </form>
+    </section>
+
+        <div id="circle1"><div id="inner-cirlce1"></div></div>
+        <script>
+            (function(){
+                const params = new URLSearchParams(window.location.search);
+                const msgEl = document.getElementById('message');
+                const err = params.get('error');
+                const ok = params.get('success');
+                if (err) {
+                    msgEl.style.display = 'block';
+                    msgEl.style.background = 'rgba(180,0,0,0.85)';
+                    msgEl.textContent = decodeURIComponent(err);
+                } else if (ok) {
+                    msgEl.style.display = 'block';
+                    msgEl.style.background = 'rgba(0,140,60,0.9)';
+                    msgEl.textContent = decodeURIComponent(ok);
+                }
+            })();
+        </script>
+</body>
+</html>
